@@ -13,14 +13,15 @@
 import speech_recognition as sr
 import pyttsx3
 
+
 # FUNCTIONS
 def begin():
     x = 1
 
+
 # Abre o microfone e reconhece pt-BR
 def ouvir_mic():
     try:
-
         with sr.Microphone() as source:
             # Chama um algoritmo de redução de ruídos na captura do som
             listener.adjust_for_ambient_noise(source)
