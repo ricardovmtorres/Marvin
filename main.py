@@ -13,16 +13,24 @@
 import speech_recognition as sr
 import pyttsx3
 from googlesearch import search
+from bs4 import BeautifulSoup
+from urllib.request import urlopen
 
 ### FUNCTIONS ###
 ## Utils ##
 def begin():
     x = 1
 
-def google_search(command):
-    for result in search()
-        return "google"
-    return 1
+def google_search(command_sliced):
+    link: str
+    query = build_phrase(command_sliced[2:])
+    for result in search(query, tld="co.in", num=10, stop=10):
+        link = result
+
+    page = urlopen(link)
+    html = page.read().decode("utf-8")
+    soup = BeautifulSoup(html, "html.parser")
+    return soup.get_text()
 
 def build_phrase(words):
     frase: str = ''
@@ -38,7 +46,7 @@ def find_func(command):
     if 'marvin' in command:
         print("Você disse: '" + command + "'")
         if command_sliced[1] == 'google':
-            google_search(command)
+            print(google_search(command_sliced))
 
     else:
         return 1
